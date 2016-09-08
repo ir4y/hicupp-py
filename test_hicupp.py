@@ -17,3 +17,8 @@ def test_simple_tag_with_id_and_child():
     assert '<div id="myid"><p >hello</p></div>' == html(["div", {"id": "myid"},
                                                         ["p", "hello"]])
 
+
+def test_tag_with_attrs_notation():
+    assert '<div id="myid"></div>' == html(["div#myid"])
+    assert '<div class="foo"></div>' == html(["div.foo"])
+    assert '<div id="myid" class="foo bar"></div>' == html(["div#myid.foo.bar"])
