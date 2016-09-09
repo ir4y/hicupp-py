@@ -6,15 +6,13 @@ def html(array):
         return array
     elif len(array) == 1:
         return __build_tag(array[0], {}, [])
-    elif len(array) == 2:
+    elif len(array) >= 2:
         tag = array[0]
         attrs = array[1]
         if type(attrs) == dict:
             return __build_tag(tag, attrs, array[2:])
         else:
             return __build_tag(tag, {}, array[1:])
-    else:
-        return __build_tag(array[0], array[1], array[2:])
 
 
 def __build_tag(the_tag, tag_attrs, children):
