@@ -17,8 +17,11 @@ def html(array):
         return __build_tag(array[0], array[1], array[2:])
 
 
-def __build_tag(tag_string, tag_attrs, children):
-    tag, attrs = __parse_tag_attrs(tag_string)
+def __build_tag(the_tag, tag_attrs, children):
+    if callable(the_tag):
+        return html(the_tag(tag_attrs, children))
+
+    tag, attrs = __parse_tag_attrs(the_tag)
     attrs.update(tag_attrs)
 
     return "<{tag} {attrs}>{children}</{tag}>".format(
