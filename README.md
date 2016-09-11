@@ -10,7 +10,7 @@ Here is a basic example of Hiccup-py syntax:
 ```python
 from hicupp import html
 
-html(["span", {"class": "foo"} "bar"]) #"<span class="foo">bar</span>"
+html(["span", {"class": "foo"} "bar"]) #<span class="foo">bar</span>
 ```
 
 The first element of the list is used as the element name. The second

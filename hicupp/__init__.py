@@ -1,18 +1,21 @@
 import re
+from .misc import get
 
 
-def html(array):
-    if type(array) == str:
-        return array
-    elif len(array) == 1:
-        return __build_tag(array[0], {}, [])
-    elif len(array) >= 2:
-        tag = array[0]
-        attrs = array[1]
-        if type(attrs) == dict:
-            return __build_tag(tag, attrs, array[2:])
-        else:
-            return __build_tag(tag, {}, array[1:])
+def html(body):
+    if isinstance(body, list):
+        array = body
+        if len(array) == 1:
+            return __build_tag(array[0], {}, [])
+        elif len(array) >= 2:
+            tag = array[0]
+            attrs = array[1]
+            if type(attrs) == dict:
+                return __build_tag(tag, attrs, get(array, 2, []))
+            else:
+                return __build_tag(tag, {}, array[1])
+    else:
+        return str(body)
 
 
 def __build_tag(the_tag, tag_attrs, children):
