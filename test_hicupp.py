@@ -42,7 +42,7 @@ def test_tag_with_computed_children_map():
     data = [1, 2, 3, 4]
 
     def mod(i):
-        return ["li", str(i)]
+        return ["li", i]
 
     assert '<ul ><li >1</li><li >2</li><li >3</li><li >4</li></ul>' ==\
         html(["ul", map(mod, data)])
@@ -51,4 +51,4 @@ def test_tag_with_computed_children_map():
 def test_tag_with_computed_children_generator():
     data = [1, 2, 3, 4]
     assert '<ul ><li >1</li><li >2</li><li >3</li><li >4</li></ul>' ==\
-        html(["ul", (["li", str(i)] for i in data)])
+        html(["ul", (["li", i] for i in data)])

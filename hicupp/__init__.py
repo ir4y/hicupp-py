@@ -1,5 +1,5 @@
 import re
-from .misc import get
+from .misc import get, is_sequence
 
 
 def html(body):
@@ -28,7 +28,9 @@ def __build_tag(the_tag, tag_attrs, children):
     return "<{tag} {attrs}>{children}</{tag}>".format(
             tag=tag,
             attrs=__build_attrs(attrs),
-            children=''.join(map(html, children)))
+            children=''.join(map(html, children))
+                     if is_sequence(children)
+                     else str(children))
 
 
 def __build_attrs(attrs):
